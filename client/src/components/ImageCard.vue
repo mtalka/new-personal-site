@@ -4,6 +4,7 @@
       :elevation="hover ? 12 : 2"
       class="mx-auto experience-card"
       @click="show = !show"
+      :ripple="false"
     >
       <v-img
         :src="require(`@/assets/${source}`)"
@@ -33,8 +34,8 @@
             <div>
               {{ description }}
             </div>
-            <div style="color: teal;" @click="goToLink($event)">
-              Go to site >>
+            <div @click="goToLink($event)">
+              <a>Go to site >></a>
             </div>
           </v-card-text>
         </div>
@@ -70,8 +71,13 @@ export default {
 .image-card {
   transition: opacity 0.4s ease-in-out;
 }
-
 .image-card:not(.on-hover) {
   opacity: 0.6;
+}
+.v-card--link:focus:before {
+  opacity: 0;
+}
+a:hover {
+  opacity: 0.9;
 }
 </style>

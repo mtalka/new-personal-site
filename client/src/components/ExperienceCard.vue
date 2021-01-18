@@ -1,8 +1,9 @@
 <template>
   <v-card
-    class="mx-auto experience-card"
-    :class="{ 'no-operations': !isExpandable }"
+    class="mx-auto experience-card native"
+    :class="{ 'no-operations': !isExpandable, 'no-longer-focused': !show }"
     @click="show = !show"
+    :ripple="false"
   >
     <v-card-text>
       <div style="display: flex; flex-direction: row;">
@@ -49,5 +50,8 @@ export default {
 }
 .no-operations {
   pointer-events: none;
+}
+.v-card--link:focus:before {
+  opacity: 0;
 }
 </style>

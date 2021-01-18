@@ -1,11 +1,15 @@
 <template>
-  <div class="section-title">
-    <span class="hashtag" v-if="!pageTitle">#</span>
-    <span class="hashtag page-title-hashtag" v-if="pageTitle">#</span>
-    <span>{{ sectionTitle }}</span>
-    <span class="comment anim-typewriter" v-if="pageTitle"
-      >// software developer & software industry pro</span
-    >
+  <div class="section-title" style="display:flex; flex-direction: row;">
+    <div>
+      <span class="hashtag" v-if="!pageTitle">#</span>
+      <span class="hashtag page-title-hashtag" v-if="pageTitle">#</span>
+    </div>
+    <div>
+      <span>{{ sectionTitle }}</span>
+      <span class="comment anim-typewriter" v-if="pageTitle"
+        >// software developer & software industry pro</span
+      >
+    </div>
   </div>
 </template>
 
@@ -22,6 +26,8 @@ export default {
 .section-title {
   color: #17a2b8;
   margin: 1rem 0 1rem 0;
+  display: flex;
+  flex-direction: row;
 }
 .hashtag {
   margin: 0 1rem 0 2rem;

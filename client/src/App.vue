@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
     <v-main>
       <Home />
     </v-main>
@@ -11,6 +11,11 @@ import Home from "./components/Home";
 
 export default {
   name: "App",
+  computed: {
+    theme() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
+    },
+  },
 
   components: {
     Home,

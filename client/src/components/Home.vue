@@ -84,7 +84,6 @@
           :title="item.title"
         />
       </v-col>
-
       <v-col class="mb-5" sm="12" md="6">
         <SectionTitle v-bind:sectionTitle="'Projects'" />
         <ImageCard
@@ -122,6 +121,18 @@
         />
       </v-col>
     </v-row>
+    <v-row justify="center">
+      <div style="margin-top: 1rem">
+        <v-btn
+          text
+          rounded
+          @click="lightSwitch()"
+          style="font-size: .6rem !important; font-weight: 600"
+        >
+          Toggle light / dark mode
+        </v-btn>
+      </div>
+    </v-row>
   </v-container>
 </template>
 
@@ -137,6 +148,19 @@ export default {
     SectionTitle,
     ExperienceCard,
     ImageCard,
+  },
+  mounted() {
+    const currentTime = new Date();
+    if (currentTime.getHours() > 10 && currentTime.getHours() < 14) {
+      this.$vuetify.theme.dark = false;
+    } else {
+      this.$vuetify.theme.dark = true;
+    }
+  },
+  methods: {
+    lightSwitch() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    },
   },
   data: () => ({
     workListItems: [
@@ -264,14 +288,14 @@ export default {
       {
         header: "BalancedKD",
         description:
-          "A web service for FaceIt Counter-Strike players to check their statistics and K/D with outliers removed",
+          "A web service for FaceIt Counter-Strike players to check their statistics and K/D with outliers removed, built using MongoDB, Node, Express, Vue",
         source: "balancedkd-pers-site.jpg",
         link: "https://balancedkd.com",
       },
       {
         header: "Matchroom Boss",
         description:
-          "A tool for captains in Counter-Strike matchroom to help see team and player statistics per map, to help in map veto",
+          "A tool for captains in Counter-Strike matchroom to help see team and player statistics per map, to help in map veto, built using Node, Express, Vue",
         source: "matchroomboss-pers-site.jpg",
         link: "https://matchroomboss.com",
       },
@@ -292,6 +316,6 @@ export default {
   box-shadow: 10px 10px 5px -10px rgba(108, 117, 125, 0.15) !important;
 }
 a:hover {
-  color: #e74c3c;
+  opacity: 0.9;
 }
 </style>
